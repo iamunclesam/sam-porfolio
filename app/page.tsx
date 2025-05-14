@@ -36,7 +36,7 @@ export default function Portfolio() {
           transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
           className="text-center"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-2">Samuel Adeyemi</h1>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-2">Sam Adeyemi</h1>
           <h2 className="text-4xl md:text-5xl font-bold text-zinc-300 mb-4">Software Developer</h2>
         </motion.div>
         <motion.p
@@ -71,12 +71,10 @@ export default function Portfolio() {
             <div className="md:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">About Me</h2>
               <p className="text-zinc-400 mb-4">
-                I'm a passionate Full Stack Developer with expertise in JavaScript and its ecosystem. I specialize in
-                building scalable web applications, from complex backend systems to intuitive user interfaces.
+                I'm a full-stack developer who loves working with JavaScript and its ecosystem. Whether it's crafting smooth user interfaces or building robust backend systems, I enjoy creating web applications that scale well and feel intuitive to use.
               </p>
               <p className="text-zinc-400">
-                With a focus on creating efficient and maintainable code, I've developed various applications ranging
-                from healthcare platforms to fintech solutions and e-commerce systems.
+                I care about writing clean, maintainable code, and I've had the chance to work on a variety of projects—from healthcare platforms to fintech tools and e-commerce systems.
               </p>
             </div>
             <div className="md:w-1/2 flex justify-center">
@@ -142,6 +140,7 @@ export default function Portfolio() {
               description="A comprehensive wellness service platform including therapists, life coaches, vendors, and matchmaking services."
               details="Built under JayCo Links, this platform connects users with wellness professionals and services, featuring a sophisticated matchmaking system."
               index={0}
+              isPrivate={true}
             />
 
             {/* Payrendr */}
@@ -150,6 +149,7 @@ export default function Portfolio() {
               description="A staff management application with salary disbursement and comprehensive employee management features."
               details="Developed under JayCo Links, this system streamlines HR operations with automated payroll processing and detailed staff records management."
               index={1}
+              isPrivate={true}
             />
 
             {/* Multitenancy Application */}
@@ -158,6 +158,8 @@ export default function Portfolio() {
               description="An application that onboards small business owners and deploys a live store with domain and hosting under 5 minutes."
               details="Built both the frontend and backend, including inventory management. Created an auto-deployment and domain linking script with Node.js, Express, and Vercel, along with payment disbursement integration using Paystack."
               index={2}
+              githubUrl="https://github.com/iamunclesam/SelApp"
+              isPrivate={false}
             />
 
             {/* SplitPay */}
@@ -166,6 +168,8 @@ export default function Portfolio() {
               description="A budgeting fintech application that won a Hackathon, with versions on traditional infrastructure and Cardano blockchain."
               details="Developed the backend for this innovative financial tool that helps users manage shared expenses and budgets efficiently."
               index={3}
+              githubUrl="https://github.com/iamunclesam/team-sav"
+              isPrivate={false}
             />
 
             {/* Hospital Management System */}
@@ -174,6 +178,8 @@ export default function Portfolio() {
               description="A comprehensive backend solution for healthcare facility management."
               details="Engineered the server-side architecture to handle patient records, appointments, billing, and medical staff coordination."
               index={4}
+                       githubUrl="https://github.com/iamunclesam/Aura-clinic"
+              isPrivate={false}
             />
 
             {/* LMS Consultant Dashboard */}
@@ -182,6 +188,7 @@ export default function Portfolio() {
               description="A frontend interface for a Learning Management System focused on consultant needs."
               details="Designed and implemented an intuitive dashboard that enables consultants to manage courses, track student progress, and analyze learning outcomes."
               index={5}
+              isPrivate={true}
             />
           </div>
         </motion.section>
@@ -207,13 +214,13 @@ export default function Portfolio() {
 
                 {/* Social Icons */}
                 <div className="flex gap-4 mt-6">
-                  <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
+                  <a href="https://github.com/iamunclesam" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
                     <Github className="w-5 h-5" />
                   </a>
-                  <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
+                  {/* <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
                     <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
+                  </a> */}
+                  <a href="https://x.com/heis_unclesam" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-white transition-colors">
                     <Twitter className="w-5 h-5" />
                   </a>
                 </div>
@@ -222,14 +229,14 @@ export default function Portfolio() {
               <div className="md:w-1/2">
                 <div className="p-6 bg-zinc-900 rounded-lg border border-zinc-700 hover:border-purple-500 transition-all text-center">
                   <h3 className="text-xl font-semibold text-white mb-4">Let's build something amazing together</h3>
-                    <a
+                  <a
                     href="https://wa.me/09046425011"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors flex items-center justify-center"
-                    >
+                  >
                     Connect on WhatsApp
-                    </a>
+                  </a>
                 </div>
               </div>
             </div>
@@ -260,9 +267,11 @@ interface ProjectCardProps {
   description: string
   details: string
   index: number
+  githubUrl?: string
+  isPrivate?: boolean
 }
 
-function ProjectCard({ title, description, details, index }: ProjectCardProps) {
+function ProjectCard({ title, description, details, index, githubUrl, isPrivate }: ProjectCardProps) {
   const isEven = index % 2 === 0
 
   return (
@@ -279,9 +288,27 @@ function ProjectCard({ title, description, details, index }: ProjectCardProps) {
         </div>
       </div>
       <div className="md:w-3/5">
-        <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
+        <div className="flex items-center gap-3 mb-3">
+          <h3 className="text-2xl font-bold text-white">{title}</h3>
+          {isPrivate && (
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-800 text-zinc-300 border border-zinc-700">
+              Private Repository
+            </span>
+          )}
+        </div>
         <p className="text-purple-400 mb-4">{description}</p>
-        <p className="text-zinc-400">{details}</p>
+        <p className="text-zinc-400 mb-4">{details}</p>
+        {githubUrl && !isPrivate && (
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-md transition-colors border border-zinc-700"
+          >
+            <Github className="h-5 w-5" />
+            View on GitHub
+          </a>
+        )}
       </div>
     </motion.div>
   )
