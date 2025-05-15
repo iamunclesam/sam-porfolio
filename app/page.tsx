@@ -36,17 +36,18 @@ export default function Portfolio() {
           transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
           className="text-center"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-2">Sam Adeyemi</h1>
-          <h2 className="text-4xl md:text-5xl font-bold text-zinc-300 mb-4">Software Developer</h2>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-2">I am Sam Adeyemi</h1>
+          <h2 className="text-3xl md:text-5xl font-bold text-zinc-300 mb-4">Software Developer</h2>
         </motion.div>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-          className="text-xl md:text-2xl text-zinc-400 mb-8 text-center max-w-2xl font-bold"
+          className="text-xl md:text-2xl text-zinc-400 mb-8 text-center max-w-2xl font-medium"
         >
-          I offer Sam as a Service (SaaS).
+          Deploying ideas at scale. Debugging life in prod. Also available as Sam-as-a-Service (SaaS).
         </motion.p>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -71,10 +72,10 @@ export default function Portfolio() {
             <div className="md:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">About Me</h2>
               <p className="text-zinc-400 mb-4">
-                I'm a full-stack developer who loves working with JavaScript and its ecosystem. Whether it's crafting smooth user interfaces or building robust backend systems, I enjoy creating web applications that scale well and feel intuitive to use.
+                I’m a full-stack developer with solid experience in JavaScript, Node.js, and React. I’ve worked on several early-stage products and understand what it takes to move fast, write clean code, and help ship a functional MVP.
               </p>
               <p className="text-zinc-400">
-                I care about writing clean, maintainable code, and I've had the chance to work on a variety of projects—from healthcare platforms to fintech tools and e-commerce systems.
+                I’m comfortable working across the stack—building APIs, setting up backend logic, and creating responsive, intuitive UIs. I enjoy collaborating with teams, solving real problems, and turning ideas into working software that users can trust.
               </p>
             </div>
             <div className="md:w-1/2 flex justify-center">
@@ -97,16 +98,48 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="py-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white">Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white text-center">Skills</h2>
+          <p className="text-zinc-400 text-center text-lg mb-12">
+            Tools I speak fluently — and occasionally argue with.
+          </p>
+
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              { name: "JavaScript Ecosystem", icon: Code },
-              { name: "GitHub & Git", icon: Github },
-              { name: "Firebase & Supabase", icon: Sparkles },
-              { name: "Node.js", icon: Code },
-              { name: "Express", icon: Code },
-              { name: "MongoDB", icon: Code },
-              { name: "Scripts & Automation", icon: Code },
+              {
+                name: "JavaScript Ecosystem",
+                icon: Code,
+                desc: "React, Vue, Next, Nuxt — the whole crew.",
+              },
+              {
+                name: "GitHub & Git",
+                icon: Github,
+                desc: "Commit messages occasionally poetic.",
+              },
+              {
+                name: "Firebase & Supabase",
+                icon: Sparkles,
+                desc: "Auth, real-time, and data — served fast.",
+              },
+              {
+                name: "Node.js",
+                icon: Code,
+                desc: "Backend logic that doesn’t crash (often).",
+              },
+              {
+                name: "Express",
+                icon: Code,
+                desc: "Routing the chaos into something clean.",
+              },
+              {
+                name: "MongoDB",
+                icon: Code,
+                desc: "NoSQL, no problem.",
+              },
+              {
+                name: "Scripts & Automation",
+                icon: Code,
+                desc: "Because I prefer not doing the same thing twice.",
+              },
             ].map((skill, index) => (
               <motion.div
                 key={index}
@@ -114,14 +147,16 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-zinc-800 p-6 rounded-lg border border-zinc-700 hover:border-purple-500 transition-all"
+                className="bg-zinc-800 p-6 rounded-lg border border-zinc-700 hover:border-purple-500 hover:scale-105 transition-all"
               >
                 <skill.icon className="h-8 w-8 text-purple-400 mb-3" />
                 <h3 className="text-xl font-semibold text-white">{skill.name}</h3>
+                <p className="text-sm text-zinc-400 mt-1">{skill.desc}</p>
               </motion.div>
             ))}
           </div>
         </motion.section>
+
 
         {/* Projects Section */}
         <motion.section
@@ -178,7 +213,7 @@ export default function Portfolio() {
               description="A comprehensive backend solution for healthcare facility management."
               details="Engineered the server-side architecture to handle patient records, appointments, billing, and medical staff coordination."
               index={4}
-                       githubUrl="https://github.com/iamunclesam/Aura-clinic"
+              githubUrl="https://github.com/iamunclesam/Aura-clinic"
               isPrivate={false}
             />
 
