@@ -20,15 +20,20 @@ export default function Portfolio() {
     ease: cubicBezier(0.33, 1, 0.68, 1),
   })
   const position = useTransform(scrollYProgress, (pos) => {
-    return pos === 1 ? "relative" : "fixed"
-  })
+    return pos < 1 ? "fixed" : "relative"
+  })  
+
+  const pointerEvents = useTransform(scrollYProgress, (pos) =>
+    pos >= 0.25 ? "none" : "auto"
+  )
+  
 
   return (
     <div ref={targetRef} className="bg-zinc-900 text-zinc-100 min-h-screen">
       {/* Hero Section */}
       <motion.div
-        style={{ opacity, scale, position }}
-        className="flex flex-col items-center justify-center w-full h-screen px-4 top-0 left-0 right-0"
+        style={{ opacity, scale, position, pointerEvents }}
+        className="flex flex-col items-center justify-center w-full h-screen px-4 top-0 left-0 right-0 z-20"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,7 +64,7 @@ export default function Portfolio() {
       </motion.div>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 pt-[100vh]">
+      <div className="max-w-6xl z-20 mx-auto px-4 pt-[100vh]">
         {/* About Section */}
         <motion.section
           initial={{ opacity: 0 }}
@@ -72,10 +77,10 @@ export default function Portfolio() {
             <div className="md:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">About Me</h2>
               <p className="text-zinc-400 mb-4">
-                I’m a full-stack developer with solid experience in JavaScript, Node.js, and React. I’ve worked on several early-stage products and understand what it takes to move fast, write clean code, and help ship a functional MVP.
+                I'm a full-stack developer with solid experience in JavaScript, Node.js, and React. I've worked on several early-stage products and understand what it takes to move fast, write clean code, and help ship a functional MVP.
               </p>
               <p className="text-zinc-400">
-                I’m comfortable working across the stack—building APIs, setting up backend logic, and creating responsive, intuitive UIs. I enjoy collaborating with teams, solving real problems, and turning ideas into working software that users can trust.
+                I'm comfortable working across the stack—building APIs, setting up backend logic, and creating responsive, intuitive UIs. I enjoy collaborating with teams, solving real problems, and turning ideas into working software that users can trust.
               </p>
             </div>
             <div className="md:w-1/2 flex justify-center">
@@ -123,7 +128,7 @@ export default function Portfolio() {
               {
                 name: "Node.js",
                 icon: Code,
-                desc: "Backend logic that doesn’t crash (often).",
+                desc: "Backend logic that doesn't crash (often).",
               },
               {
                 name: "Express",
@@ -265,7 +270,7 @@ export default function Portfolio() {
                 <div className="p-6 bg-zinc-900 rounded-lg border border-zinc-700 hover:border-purple-500 transition-all text-center">
                   <h3 className="text-xl font-semibold text-white mb-4">Let's build something amazing together</h3>
                   <a
-                    href="https://wa.me/09046425011"
+                    href="https://wa.me/+2349046425011"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors flex items-center justify-center"
@@ -338,7 +343,7 @@ function ProjectCard({ title, description, details, index, githubUrl, isPrivate 
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-md transition-colors border border-zinc-700"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-md transition-colors border border-zinc-700 hover:border-purple-500"
           >
             <Github className="h-5 w-5" />
             View on GitHub
